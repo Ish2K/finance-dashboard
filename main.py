@@ -20,7 +20,7 @@ def fetch_data(symbol,interval,exchange,limit=None):
 	return df
 
 
-symbol = st.sidebar.selectbox(label="Select your symbol", options=("BTC/USDT","ETH/USDT"))
+symbol = st.sidebar.selectbox(label="Select your symbol", options=("BTC/USDT","ETH/USDT","1INCH/USDT"))
 interval = st.sidebar.selectbox(label="Select inteval", options=("1m","5m","15m","1h"))
 exchange = st.sidebar.selectbox(label="Select exchange", options=("Binance","Okex"))
 
