@@ -4,11 +4,12 @@ import pandas as pd
 import ccxt
 import datetime
 import plotly.graph_objects as go
+from pprint import pprint
 
 binance = ccxt.binance()
 okex = ccxt.okex5()
 
-
+all_symbols = tuple(sorted(list(binance.load_markets().keys())))
 st.title('Crypto Monitoring Dashboard')
 
 @st.cache
@@ -24,7 +25,7 @@ def fetch_data(symbol,interval,exchange,limit=None):
 def plot_data(df):
 	data=[go.Candlestick(x=df['Time'],open=df['Open'], high=df['High'],low=df['Low'], close=df['Close'])]
 	return data
-symbol = st.sidebar.selectbox(label="Select your symbol", options=("BTC/USDT","ETH/USDT","1INCH/USDT"))
+symbol = st.sidebar.selectbox(label="Select your symbol", options=tuple([x for x in all_symbols if x[-4:]=="USDT"]))
 interval = st.sidebar.selectbox(label="Select inteval", options=("1m","5m","15m","1h"))
 exchange = st.sidebar.selectbox(label="Select exchange", options=("Binance","Okex"))
 
