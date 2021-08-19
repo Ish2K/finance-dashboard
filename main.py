@@ -15,7 +15,7 @@ st.title('Crypto Monitoring Dashboard')
 def fetch_data(symbol,interval,exchange,limit=None):
 	if(exchange=="Binance"):
 		data = binance.fetch_ohlcv(symbol, interval,limit=limit)
-	else:
+	else if(exchange=="Okex"):
 		data = okex.fetch_ohlcv(symbol, interval,limit=limit)
 	df = pd.DataFrame.from_records(data,columns=["Time","Open","High","Low","Close","Volume"])	
 	df['Time'] = pd.to_datetime(df['Time'],unit='ms')
