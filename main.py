@@ -18,6 +18,7 @@ def fetch_data(symbol,interval,exchange,limit=None):
 	else:
 		data = okex.fetch_ohlcv(symbol, interval,limit=limit)
 	df = pd.DataFrame.from_records(data,columns=["Time","Open","High","Low","Close","Volume"])	
+	df['Time'] = pd.to_datetime(df['Time'],unit='ms')
 	return df
 
 def plot_data(df):
