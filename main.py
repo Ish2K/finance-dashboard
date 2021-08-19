@@ -54,4 +54,3 @@ st.dataframe(data)
 st.markdown(get_table_download_link(data), unsafe_allow_html=True)
 
 st.plotly_chart(plot_data(data),use_container_width=True)
-
